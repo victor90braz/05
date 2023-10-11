@@ -48,5 +48,5 @@ class NewsLetterSubscriptionsController {
 
 $controller = new NewsLetterSubscriptionsController();
 
-$controller->store(new Drip());
+$controller->store(new CampaignMonitor());
 
