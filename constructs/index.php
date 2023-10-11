@@ -2,7 +2,11 @@
 $basePath = "C:\\Users\\braz9\\Desktop\\projects\\laracasts\\object-oriented-principles-php\\05\\";
 require_once $basePath . "functions.php";
 
-class CampaignMonitor {
+interface NewsLetter {
+    public function subscribe($email);
+}
+
+class CampaignMonitor implements NewsLetter {
 
     /**
      * Subscribe the user using CampaignMonitor.
@@ -14,7 +18,7 @@ class CampaignMonitor {
     }
 }
 
-class Drip {
+class Drip implements NewsLetter {
 
     /**
      * Subscribe the user using Drip.
@@ -34,8 +38,10 @@ class NewsLetterSubscriptionsController {
      *
      * @param object $newsLetter An instance of a subscription service class.
      */
-    public function store($newsLetter) {
+    public function store(NewsLetter $newsLetter) {
+
         $email = 'victor@gmail.com';
+
         $newsLetter->subscribe($email);
     }
 }
